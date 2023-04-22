@@ -1,5 +1,6 @@
 import os
 import sys
+import logging
 
 import openai
 
@@ -19,7 +20,37 @@ def index():
             prompt=generate_prompt(plant),
             temperature=0.6,
         )
-        return redirect(url_for("index", result=response.choices[0].text))
+
+        # get string containing names delimited by commas
+        # store names as list
+        plant_name_list = response.choices[0].text.split(", ")
+
+        tuple_list = []
+
+        for p in plant_name_list:
+
+            # remove leading and trailing white space
+            # remove the fullstop in the last element from the list
+            pp = p.strip().replace('.', '')
+
+            PROMPT = 'This plant is called, {}, and has these characteristics {}'.format(
+                pp, plant)
+
+            respond = openai.Image.create(
+                prompt=PROMPT,
+                n=1,
+                size="256x256",
+            )
+
+            # store plant names as element 0th in the tuples
+            # store urls as element 1th in the tuples
+            #
+            # list of tuples ("plant-name", "image-url")
+            item = (str(pp), str(respond["data"][0]["url"]))
+
+            tuple_list.append(item)
+
+        return render_template("index.html", result=tuple_list)
 
     result = request.args.get("result")
     return render_template("index.html", result=result)
@@ -32,7 +63,7 @@ Plant: Non-flowering
 Names: Shadow Tree, Faerie Moss, Serpent's Tongue 
 Plant: Flowering
 Names: Myrrhical, Mystic Dewdrop, Mermaid's Hair
-Plant: {}
+Plant description: {}
 Names:""".format(
         plant.capitalize()
     )
