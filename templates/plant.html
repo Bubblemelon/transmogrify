@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col">
+
+      <img class="rounded"
+        src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmY1YzY3NGFhYWQ4NmJlNDgzOGRjMzNjYmEzMzNmNTNjMzc5MDQwNSZjdD1n/J5Xa9v7T9ECRXpZ9PB/giphy.gif" />
+      <h3>Magical Plant Name</h3>
+      <form action="/" method="post">
+        <input type="text" name="plant" placeholder="Concoct 🔮 a plant!" required />
+        <button type="submit" class="btn"> Click Me 🖱</button>
+      </form>
+
+    </div>
+
+    <div class="col">
+      {% if result %}
+        <h4>🌬 Poof!</h4>
+
+        {% for name, url in result %}
+          <figure class="figure">
+            <img src="{{ url }}" class="figure-img img-fluid rounded" alt="{{ name }}">
+            <figcaption class="figure-caption">{{ name }}</figcaption>
+          </figure>
+        {% endfor %}
+
+      {% endif %}
+    </div>
+  </div>

@@ -2,14 +2,11 @@
 {% block title %}transmogrify 🪄{%endblock%}
 {% block content %}
 
-    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmY1YzY3NGFhYWQ4NmJlNDgzOGRjMzNjYmEzMzNmNTNjMzc5MDQwNSZjdD1n/J5Xa9v7T9ECRXpZ9PB/giphy.gif" class="icon" />
-    <h3>Magical Plant Name </h3>
-    <form action="/" method="post">
-      <input type="text" name="plant" placeholder="Concoct 🔮 a plant!" required />
-      <input type="submit" value="Generate names" />
-    </form>
-    {% if result %}
-    <div class="result">THIS IS THE RESULT: {{ result }}</div>
-    {% endif %}
-    
+<div class="container">
+
+  {% include 'plant.html'%}
+
+  <hr class="hr hr-blurry" />
+
+</div>
 {% endblock %}
