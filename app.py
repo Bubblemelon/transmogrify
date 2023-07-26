@@ -18,7 +18,7 @@ def index():
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=generate_prompt(plant),
-            temperature=0.6,
+            temperature=0.6, # degree of randomness for output
         )
 
         # get string containing names delimited by commas
@@ -54,6 +54,24 @@ def index():
 
     result = request.args.get("result")
     return render_template("index.html", result=result)
+
+@app.route('/chat', methods=("GET", "POST"))
+def chat(): {}
+    
+
+
+@app.route('/test', methods=['POST'])
+def test():
+
+    # if test.validate_on_submit():
+    #     ...  # handle the register form
+    # # render the same template to pass the error message
+    # # or pass `form.errors` with `flash()` or `session` then redirect to /
+
+    test1 = [('Pixie Dust', 'https://oaidalleapiprodscus.blob.core.windows.net/private/org-YgNABaC2IK9apU936paO5HDZ/user-XoPOH165ivwdiHtQ88wma1At/img-CQo7IDWWvnhvzLjvMTCl7Diy.png?st=2023-04-22T07%3A45%3A27Z&se=2023-04-22T09%3A45%3A27Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-04-22T08%3A28%3A50Z&ske=2023-04-23T08%3A28%3A50Z&sks=b&skv=2021-08-06&sig=ZKwp34mGjKcSvXUjDwKob9tYxIHH7Hf%2BTGsDoo4JIu4%3D'), ('Violet Velvet',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            'https://oaidalleapiprodscus.blob.core.windows.net/private/org-YgNABaC2IK9apU936paO5HDZ/user-XoPOH165ivwdiHtQ88wma1At/img-WnzchRSaqM9irKQtYXEuGg1Z.png?st=2023-04-22T07%3A45%3A33Z&se=2023-04-22T09%3A45%3A33Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-04-22T06%3A52%3A14Z&ske=2023-04-23T06%3A52%3A14Z&sks=b&skv=2021-08-06&sig=mAM/h3OTwiSDjIMRoRYzQoKnD8d8kKAAciHjpRkFy5o%3D'), ('Amethyst Fluff', 'https://oaidalleapiprodscus.blob.core.windows.net/private/org-YgNABaC2IK9apU936paO5HDZ/user-XoPOH165ivwdiHtQ88wma1At/img-EJwXTv6w4xPJNR8hwtEtqx4e.png?st=2023-04-22T07%3A45%3A38Z&se=2023-04-22T09%3A45%3A38Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-04-22T08%3A29%3A43Z&ske=2023-04-23T08%3A29%3A43Z&sks=b&skv=2021-08-06&sig=waVR3BGqtactSj50afBRtsbrf2wxChtWyHKtqzLrhqw%3D')]
+    test2 = [('hello', '1'), ('ello', '2'), ('llo', '3')]
+    return render_template('index.html', test_value=test1)
 
 
 def generate_prompt(plant):

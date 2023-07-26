@@ -1,0 +1,23 @@
+<div class="row gx-8 gy-8">
+    <div class="col justify-content-center ">
+
+      <form action="{{ url_for('test') }}" method="post">
+        <button type="submit"> Send </button>
+      </form>
+
+      {% for thing, number in test_value %}
+      <!-- <p>{{ thing }}</p>
+      <p>{{ number }}</p> -->
+      <figure class="figure">
+        <img src="{{ number }}" class="figure-img img-fluid rounded" alt="{{ thing }}">
+        <figcaption class="figure-caption">{{ thing }}</figcaption>
+      </figure>
+
+      {% endfor %}
+
+    </div>
+
+    <div class="col">
+
+    </div>
+</div>

@@ -1,0 +1,14 @@
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h3>CHAT</h3>
+        <div id="chat"></div>
+        <div class="mb-3">
+            <textarea class="form-control" id="chatbox" placeholder="What is your query?" rows="3"></textarea>
+            <!-- shift key new line + enter for submit -->
+          </div>
+        <button class="btn" onclick="typeWriter( { answer } )">📬</button>
+        
+    </div>
+</div>
+{% endblock %}
