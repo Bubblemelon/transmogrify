@@ -59,7 +59,8 @@ FLASK_ENV=development
 OPENAI_API_KEY=
 ```
 
-#### References
+### References
 
 Adapted from the [Quickstart guide](https://github.com/openai/openai-quickstart-python)
 
+[OpenAI Cookbook](https://github.com/openai/openai-cookbook)
